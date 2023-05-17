@@ -64,6 +64,7 @@ function Timeline() {
               timestamp={post.timestamp}
               id={post.id}
               deletePost={_deletePost}
+              favorite={post.favorite}
             />
           ))}
         </FlipMove>

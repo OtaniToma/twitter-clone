@@ -1,4 +1,4 @@
-import { VerifiedUser } from "@mui/icons-material";
+import { VerifiedUser, Favorite, FavoriteBorder } from "@mui/icons-material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Avatar } from "@mui/material";
 import React, { forwardRef } from "react";
@@ -18,6 +18,7 @@ const Post = forwardRef(
       timestamp,
       id,
       deletePost,
+      favorite,
     },
     ref
   ) => {
@@ -54,9 +55,23 @@ const Post = forwardRef(
           </div>
           <img src={image} />
           <div className="post--footer">
+            {favorite ? (
+              <Favorite
+                className="icon--favorite"
+                style={{ color: "#f91880" }}
+                fontSize="small"
+              />
+            ) : (
+              <FavoriteBorder
+                className="icon--favorite"
+                style={{ color: "grey" }}
+                fontSize="small"
+              />
+            )}
             <DeleteIcon
               className="icon--delete"
               fontSize="small"
+              style={{ color: "grey" }}
               onClick={_deletePost}
             />
           </div>

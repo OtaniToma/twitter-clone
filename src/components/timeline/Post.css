@@ -49,6 +49,6 @@ p {
   padding: 15px;
 }
 
-.icon--delete {
+.icon--favorite, .icon--delete {
   cursor: pointer;
 }

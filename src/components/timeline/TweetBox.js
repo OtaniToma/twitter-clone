@@ -19,6 +19,7 @@ function TweetBox() {
         "https://pbs.twimg.com/profile_images/1590968738358079488/IY9Gx6Ok_400x400.jpg",
       image: tweetImage,
       timestamp: serverTimestamp(),
+      favorite: false,
     });
 
     setTweetMessage("");
