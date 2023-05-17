@@ -17,8 +17,10 @@ const Post = forwardRef(
       avatar,
       timestamp,
       id,
+      isFavorite,
+      addFavorite,
+      deleteFavorite,
       deletePost,
-      favorite,
     },
     ref
   ) => {
@@ -27,6 +29,14 @@ const Post = forwardRef(
         locale: ja,
       });
       return timestamp;
+    };
+
+    const _addFavorite = () => {
+      addFavorite(id);
+    };
+
+    const _deleteFavorite = () => {
+      deleteFavorite(id);
     };
 
     const _deletePost = () => {
@@ -55,17 +65,19 @@ const Post = forwardRef(
           </div>
           <img src={image} />
           <div className="post--footer">
-            {favorite ? (
+            {isFavorite ? (
               <Favorite
                 className="icon--favorite"
                 style={{ color: "#f91880" }}
                 fontSize="small"
+                onClick={_deleteFavorite}
               />
             ) : (
               <FavoriteBorder
                 className="icon--favorite"
                 style={{ color: "grey" }}
                 fontSize="small"
+                onClick={_addFavorite}
               />
             )}
             <DeleteIcon
