@@ -24,7 +24,13 @@ function Timeline() {
 
     // Cloud Firestore でリアルタイム アップデートを入手する
     onSnapshot(q, (querySnapshot) => {
-      setPosts(querySnapshot.docs.map((doc) => doc.data()));
+      setPosts(
+        querySnapshot.docs.map(
+          (doc) => doc.data({ serverTimestamps: "estimate" })
+          // estimate：保留中(serverTimeStamp が null)の時は見積もり時刻を返してくれる。 timestamp を利用できるようになると、その値に変更する
+          // 省略 または none：timestamp を利用できるようになるまでは null で返す
+        )
+      );
     });
   }, []);
 
@@ -43,6 +49,7 @@ function Timeline() {
               text={post.text}
               avatar={post.avatar}
               image={post.image}
+              timestamp={post.timestamp}
             />
           ))}
         </FlipMove>
