@@ -7,10 +7,22 @@ import {
 } from "@mui/icons-material";
 import { Avatar } from "@mui/material";
 import React, { forwardRef } from "react";
+import { format, formatDistance } from "date-fns";
+import { ja } from "date-fns/locale";
 import "./Post.css";
 
 const Post = forwardRef(
-  ({ displayName, username, verified, text, image, avatar }, ref) => {
+  (
+    { displayName, username, verified, text, image, avatar, timestamp },
+    ref
+  ) => {
+    const time = (date) => {
+      let timestamp = formatDistance(new Date(), date.toDate(), {
+        locale: ja,
+      });
+      return timestamp;
+    };
+
     return (
       <div className="post" ref={ref}>
         <div className="post--avatar">
@@ -22,7 +34,8 @@ const Post = forwardRef(
               <h3>
                 {displayName}
                 <span className="post--headerSpecial">
-                  <VerifiedUser className="post--badge" />@{username}
+                  <VerifiedUser className="post--badge" />@{username}{" "}
+                  {time(timestamp)}
                 </span>
               </h3>
             </div>
