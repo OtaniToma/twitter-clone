@@ -20,8 +20,8 @@ p {
 
 .post--footer {
   display: flex;
-  justify-content: flex-end;
-  margin-top: 10px;
+  justify-content: space-between;
+  margin: 10px 0;
 }
 
 .post--headerDescription {
@@ -49,6 +49,6 @@ p {
   padding: 15px;
 }
 
-.icon--delete {
+.icon--favorite, .icon--delete {
   cursor: pointer;
 }

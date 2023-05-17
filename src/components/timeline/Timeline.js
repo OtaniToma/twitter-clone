@@ -10,6 +10,8 @@ import {
   onSnapshot,
   orderBy,
   query,
+  getDoc,
+  updateDoc,
   deleteDoc,
 } from "firebase/firestore";
 import FlipMove from "react-flip-move";
@@ -41,6 +43,22 @@ function Timeline() {
     });
   }, []);
 
+  const _addFavorite = (props) => {
+    const id = props;
+    const postToFavorite = doc(db, "posts", id);
+    updateDoc(postToFavorite, {
+      isFavorite: true,
+    });
+  };
+
+  const _deleteFavorite = (props) => {
+    const id = props;
+    const postToFavorite = doc(db, "posts", id);
+    updateDoc(postToFavorite, {
+      isFavorite: false,
+    });
+  };
+
   const _deletePost = (props) => {
     const id = props;
     deleteDoc(doc(db, "posts", id));
@@ -63,6 +81,9 @@ function Timeline() {
               image={post.image}
               timestamp={post.timestamp}
               id={post.id}
+              isFavorite={post.isFavorite}
+              addFavorite={_addFavorite}
+              deleteFavorite={_deleteFavorite}
               deletePost={_deletePost}
             />
           ))}
