@@ -17,17 +17,17 @@ function Widgets() {
 
       <div className="widgets--widgetContainer">
         <h2>いまどうしてる？</h2>
-        <TwitterTweetEmbed tweetId="1586326965623361536" />
+        <TwitterTweetEmbed tweetId="1585341984679469056" />
 
         <TwitterTimelineEmbed
           sourceType="profile"
-          screenName="toma_wari"
+          screenName="elonmusk"
           options={{ height: 400 }}
         />
 
         <TwitterShareButton
-          url={"https://twitter.com/toma_wari"}
-          options={{ text: "TwitterShareButton", via: "toma_wari" }}
+          url={"https://twitter.com/elonmusk"}
+          options={{ text: "TwitterShareButton", via: "elonmusk" }}
         />
       </div>
     </div>
