@@ -1,10 +1,5 @@
-import {
-  ChatBubbleOutline,
-  FavoriteBorder,
-  PublishOutlined,
-  Repeat,
-  VerifiedUser,
-} from "@mui/icons-material";
+import { VerifiedUser } from "@mui/icons-material";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { Avatar } from "@mui/material";
 import React, { forwardRef } from "react";
 import { format, formatDistance } from "date-fns";
@@ -13,7 +8,17 @@ import "./Post.css";
 
 const Post = forwardRef(
   (
-    { displayName, username, verified, text, image, avatar, timestamp },
+    {
+      displayName,
+      username,
+      verified,
+      text,
+      image,
+      avatar,
+      timestamp,
+      id,
+      deletePost,
+    },
     ref
   ) => {
     const time = (date) => {
@@ -21,6 +26,10 @@ const Post = forwardRef(
         locale: ja,
       });
       return timestamp;
+    };
+
+    const _deletePost = () => {
+      deletePost(id);
     };
 
     return (
@@ -45,10 +54,11 @@ const Post = forwardRef(
           </div>
           <img src={image} />
           <div className="post--footer">
-            <ChatBubbleOutline fontSize="small" />
-            <Repeat fontSize="small" />
-            <FavoriteBorder fontSize="small" />
-            <PublishOutlined fontSize="small" />
+            <DeleteIcon
+              className="icon--delete"
+              fontSize="small"
+              onClick={_deletePost}
+            />
           </div>
         </div>
       </div>

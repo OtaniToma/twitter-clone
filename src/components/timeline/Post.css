@@ -20,7 +20,7 @@ p {
 
 .post--footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   margin-top: 10px;
 }
 
@@ -47,4 +47,8 @@ p {
 
 .post--avatar {
   padding: 15px;
+}
+
+.icon--delete {
+  cursor: pointer;
 }
